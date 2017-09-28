@@ -71,4 +71,12 @@ func main() {
 					&node{ 8, nil, nil },
 					&node { 9, nil, nil } },
 			nil}}
+
+
+	fmt.Print("PREORDER: ")
+	tree.preOrder(visitor)
+}
+
+func visitor(value int) {
+	fmt.Print(value, " ")
 }
