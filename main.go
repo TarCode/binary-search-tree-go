@@ -15,3 +15,13 @@ func (n *node) preOrder(visit func(int)) {
 	n.left.preOrder(visit)
 	n.right.preOrder(visit)
 }
+
+func (n *node) inOrder(visit func(int)) {
+	if (n == nil) {
+		return 
+	} 
+	n.left.inOrder(visit)
+	visit(n.value)
+	n.right.inOrder(visit)
+}
+
