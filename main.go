@@ -33,3 +33,27 @@ func (n *node) postOrder(visit func(int)) {
 	n.right.postOrder(visit)
 	visit(n.value)
 }
+
+func (n *node) levelOrder(visit func(int)) {
+	if (n == nil) {
+		return 
+	}
+	for queue := []*node{n}; ; {
+		n = queue[0]
+		visit(n.value)
+		copy(queue, queue[1:])
+		queue = queue[:len(queue)-1]
+
+		if (n.left != nil) {
+			queue = append(queue, n.right)
+		}
+
+		if (n.right != nil) {
+			queue = append(queue, n.right)
+		}
+
+		if len(queue) == 0 {
+			return 
+		}
+	}
+}
