@@ -57,3 +57,18 @@ func (n *node) levelOrder(visit func(int)) {
 		}
 	}
 }
+
+func main() {
+	
+	tree := &node { 1, 
+		&node { 2, 
+			&node { 4, 
+				&node { 7, 
+					nil, nil }, nil}, 
+					&node { 5, nil, nil } },
+			&node { 3,
+				 &node { 6,
+					&node{ 8, nil, nil },
+					&node { 9, nil, nil } },
+			nil}}
+}
