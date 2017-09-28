@@ -35,27 +35,24 @@ func (n *node) postOrder(visit func(int)) {
 }
 
 func (n *node) levelOrder(visit func(int)) {
-	if (n == nil) {
-		return 
-	}
-	for queue := []*node{n}; ; {
-		n = queue[0]
-		visit(n.value)
-		copy(queue, queue[1:])
-		queue = queue[:len(queue)-1]
-
-		if (n.left != nil) {
-			queue = append(queue, n.right)
-		}
-
-		if (n.right != nil) {
-			queue = append(queue, n.right)
-		}
-
-		if len(queue) == 0 {
-			return 
-		}
-	}
+    if n == nil {
+        return
+    }
+    for queue := []*node{n}; ; {
+        n = queue[0]
+        visit(n.value)
+        copy(queue, queue[1:])
+        queue = queue[:len(queue)-1]
+        if n.left != nil {
+            queue = append(queue, n.left)
+        }
+        if n.right != nil {
+            queue = append(queue, n.right)
+        }
+        if len(queue) == 0 {
+            return
+        }
+    }
 }
 
 func main() {
@@ -75,6 +72,21 @@ func main() {
 
 	fmt.Print("PREORDER: ")
 	tree.preOrder(visitor)
+	fmt.Println()
+
+	fmt.Print("INORDER: ")
+	tree.inOrder(visitor)
+	fmt.Println()
+
+	fmt.Print("POSTORDER: ")
+	tree.postOrder(visitor)
+	fmt.Println()
+
+	fmt.Print("LEVEL ORDER: ")
+	tree.levelOrder(visitor)
+	fmt.Println()
+
+
 }
 
 func visitor(value int) {
